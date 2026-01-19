@@ -1,8 +1,16 @@
 <script>
   function secondHighest(arr) {
-    arr = arr.map(Number);          // convert to numbers
-    arr.sort((a, b) => a - b);      // numeric sort
-    return arr[arr.length - 2];     // second highest
+    arr = arr.map(Number);
+
+    // remove duplicates
+    let unique = [...new Set(arr)];
+
+    if (unique.length < 2) {
+      return -Infinity;
+    }
+
+    unique.sort((a, b) => b - a); // descending
+    return unique[1];
   }
 
   function Main() {
